@@ -414,41 +414,6 @@
             position: relative;
             animation: slideIn 0.4s;
         }
-.about-block {
-    height: auto; /* вместо 300px */
-    min-height: 220px; /* минимальная высота для компактности */
-    padding: 25px 15px; /* внутренние отступы вместо абсолютного позиционирования */
-    position: relative;
-}
-
-/* Скрываем фоновое фото */
-.about-photo-bg {
-    display: none !important;
-}
-
-/* Меняем overlay: теперь это просто текстовый блок */
-.about-text-overlay {
-    position: static; /* отменяем absolute */
-    background: none;
-    color: #2c3e50;
-    text-align: center;
-    padding: 0;
-    display: block;
-    width: auto;
-    height: auto;
-}
-
-.about-text-content {
-    padding-left: 0;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-.about-text-content p {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 12px;
-}
 
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -522,7 +487,6 @@
                 text-align: center;
             }
 
-            /* Меняем шапку: фото над текстом */
             .header-info-left {
                 display: block !important;
                 text-align: center;
@@ -542,15 +506,40 @@
                 height: 70px;
             }
 
-            /* Скрываем фоновое фото в блоке "Обо мне" */
+            /* --- Адаптация блока "Обо мне" для мобильных --- */
+            .about-block {
+                height: auto;
+                min-height: 240px;
+                padding: 25px 20px;
+                position: relative;
+            }
+
             .about-photo-bg {
                 display: none !important;
             }
 
-            .about-block {
-                height: 300px;
+            .about-text-overlay {
+                position: static;
+                background: none;
+                color: #2c3e50;
+                text-align: center;
+                padding: 0;
+                display: block;
             }
 
+            .about-text-content {
+                padding-left: 0;
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .about-text-content p {
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-bottom: 12px;
+            }
+
+            /* остальные стили */
             .service-block,
             .reviews-block,
             .emergency-block {
@@ -818,7 +807,6 @@
         <div class="carousel-outer">
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Слайды без изменений -->
                     <div class="carousel-slide">
                         <div class="review-card">
                             <div class="review-text">Николай Валентинович вытащил меня из очень сложной ситуации по статье за мошенничество. Дело закрыли на стадии следствия — доказали отсутствие умысла.</div>
@@ -986,7 +974,4 @@
                 }
             });
         });
-    </script>
-
-</body>
-</html>
+    </scri
