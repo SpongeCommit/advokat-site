@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адвокат Пиряков Н.В. | Нижний Новгород</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #d9e8f5;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, .nav-link, .stat-block h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* Шапка */
+        .header-info {
+            background-color: white;
+            padding: 30px 5% 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #d0e0f0;
+            color: #2c3e50;
+        }
+
+        .header-info-left h1 {
+            margin: 0 0 5px;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .header-info-left p.tagline {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;         /* толще — bold */
+    color: #1a3a6c;           /* темнее, чем #3a5ca0 */
+    line-height: 1.7;
+        }
+
+        .header-contacts {
+            text-align: right;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        .header-contacts div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        .service-icon {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2;
+            flex-shrink: 0;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3a5ca0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Меню — темнее */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            background-color: #f0f7ff;
+            padding: 12px 0;
+            z-index: 1000;
+            border-bottom: 1px solid #cfdde9;
+            width: 100%;
+            margin: 0;
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 0;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            max-width: none;
+            flex-wrap: nowrap;
+        }
+
+        .nav-link {
+            color: #2a4a8a;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 6px 12px;
+            position: relative;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: #1a73e8;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #1a73e8;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                display: none;
+            }
+        }
+
+        /* Обо мне */
+        .about-block {
+            position: relative;
+            padding: 0;
+            max-width: 1200px;
+            margin: 40px auto;
+            height: 340px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 30, 60, 0.12);
+        }
+
+        .about-photo-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+        }
+
+        .about-text-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 2;
+            color: white;
+            text-align: left;
+        }
+
+        .about-text-content {
+            max-width: 800px;
+            padding-left: 20px;
+        }
+
+        .about-text-content p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 1000;
+        }
+
+        /* Блоки услуг */
+        .service-block {
+            padding: 20px 5% 35px;
+            max-width: 1200px;
+            margin: 45px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 30, 60, 0.08);
+            border: 1px solid #d0e0f0;
+        }
+
+        .service-block h2 {
+            margin-top: 0;
+            color: #1a73e8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .service-block ul {
+            padding-left: 40px;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .service-block li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        /* Направления */
+        .directions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            padding: 35px 5%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        .direction-card {
+            background-color: white;
+            padding: 25px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 30, 60, 0.05);
+            font-size: 1.15rem;
+            font-weight: 500;
+            border: 1px solid #d0e0f0;
+            color: #2c3e50;
+        }
+
+        .direction-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0, 30, 60, 0.1);
+            border-color: #1a73e8;
+        }
+
+        /* Отзывы — карусель */
+        .reviews-block {
+            padding: 20px 5% 35px;
+            max-width: 1200px;
+            margin: 45px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 30, 60, 0.08);
+            border: 1px solid #d0e0f0;
+        }
+
+        .reviews-block h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #3a5ca0;
+        }
+
+        .carousel-outer {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-right: 60px;
+            box-sizing: border-box;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 400%; /* 4 слайда */
+        }
+
+        .carousel-slide {
+            flex: 0 0 25%; /* 1/4 ширины */
+            padding: 0 10px;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .review-card {
+            background-color: #f9fbfd;
+            padding: 18px;
+            border-radius: 12px;
+            border-left: 3px solid #1a73e8;
+            box-shadow: 0 2px 8px rgba(0, 30, 60, 0.06);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .review-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 30, 60, 0.08);
+        }
+
+        .review-text {
+            font-size: 1.02rem;
+            line-height: 1.65;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .review-meta {
+            font-size: 0.9rem;
+            color: #5a6b82;
+            font-style: normal;
+            border-top: 1px solid #e0eaf4;
+            padding-top: 10px;
+        }
+
+        .carousel-next-btn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+            transition: all 0.25s ease;
+            z-index: 10;
+        }
+
+        .carousel-next-btn:hover {
+            background: #0d62d0;
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 6px 14px rgba(26, 115, 232, 0.4);
+        }
+
+        .carousel-next-btn svg {
+            stroke-width: 2.5;
+        }
+
+        /* Экстренная помощь */
+        .emergency-block {
+            padding: 45px 5%;
+            max-width: 1200px;
+            margin: 45px auto;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f8ff, #e0ecf8);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 30, 60, 0.08);
+            border: 1px solid #d0e0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 30, 60, 0.2);
+    position: relative;
+    animation: slideIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #1a73e8;
+}
+
+/* Кнопка в модалке — стили как у вас */
+.call-button {
+    display: inline-block;
+    padding: 18px 50px;
+    background: white;
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+    border: 2px solid #1a73e8;
+}
+
+.call-button:hover {
+    background: #f0f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(26, 115, 232, 0.25);
+}
+
+        /* Видео */
+        .video-section {
+            padding: 5px 5%;
+            max-width: 1200px;
+            margin: 15px auto;
+            text-align: center;
+        }
+
+        /* Подвал */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 0.95rem;
+            color: #666;
+            border-top: 1px solid #d0e0f0;
+            margin-top: 40px;
+            background-color: #f0f7ff;
+        }
+
+        @media (max-width: 768px) {
+            .header-info {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .avatar {
+                width: 70px;
+                height: 70px;
+            }
+
+            .about-block {
+                height: 300px;
+            }
+
+            .service-block,
+            .reviews-block,
+            .emergency-block {
+                padding: 25px 5%;
+            }
+
+            .carousel-slide {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .carousel-outer {
+                padding-right: 0;
+            }
+
+            .carousel-next-btn {
+                right: 10px;
+            }
+
+            .service-icon {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+</head>
+
+<script>
+    function openModal(title, text) {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-text').textContent = text;
+        document.getElementById('modal').style.display = 'block';
+        document.body.style.overflow = 'hidden'; // запрет прокрутки фона
+    }
+
+    function closeModalManually() {
+        document.getElementById('modal').style.display = 'none';
+        document.body.style.overflow = ''; // вернуть прокрутку
+    }
+
+    function closeModal(event) {
+        if (event.target.id === 'modal') {
+            closeModalManually();
+        }
+    }
+
+    // Закрытие по Esc
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.getElementById('modal').style.display === 'block') {
+            closeModalManually();
+        }
+    });
+</script>
+
+
+<body>
+
+    <!-- Микроразметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Attorney",
+      "name": "Пиряков Н.В.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Васенко, д. 4, офис 403",
+        "addressLocality": "Нижний Новгород",
+        "postalCode": "603000"
+      },
+      "telephone": "+79023068766",
+      "email": "mailto:pvn_556@mail.ru",
+      "url": "https://вашсайт.рф"
+    }
+    </script>
+
+    <!-- Шапка -->
+    <div class="header-info">
+        <div class="header-info-left" style="display: flex; align-items: center; gap: 20px;">
+            <img src="photo.jpg" alt="Фото Пирякова Н.В." class="avatar">
+            <div>
+                <h1>Палата адвокатов Нижегородской области</h1>
+                <hr>
+                <p class="tagline">АДВОКАТСКИЙ КАБИНЕТ<br>Пиряков Николай Валентинович</p>
+            </div>
+        </div>
+        <div class="header-contacts">
+            <div>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+    <a href="https://yandex.ru/maps/org/advokat_piryakov_n_v_/92912791736/?indoorLevel=1&ll=43.872919%2C56.349350&z=16.65" 
+       target="_blank" 
+       style="color: #1a73e8; text-decoration: none; font-weight: 600;">
+        г. Нижний Новгород, ул. Васенко, д. 4, офис 403
+    </a>
+</div>
+            <div>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+                </svg>
+                +7 (902) 306-87-66
+            </div>
+            <div>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                pvn_556@mail.ru
+            </div>
+        </div>
+    </div>
+
+    <!-- Меню -->
+    <div class="nav-container">
+        <div class="nav-list">
+            <a href="#home" class="nav-link">Главная</a>
+            <a href="#criminal" class="nav-link">Уголовные дела</a>
+            <a href="#civil" class="nav-link">Гражданские дела</a>
+            <a href="#business" class="nav-link">Юр. сопровождение бизнеса</a>
+            <a href="#directions" class="nav-link">Направления</a>
+            <a href="#contacts" class="nav-link">Контакты</a>
+        </div>
+    </div>
+
+    <!-- Обо мне -->
+    <div id="about" class="about-block">
+        <img src="photo2.jpg" alt="Пиряков Н.В." class="about-photo-bg">
+        <div class="about-text-overlay">
+            <div class="about-text-content">
+                <p>Адвокат с 25-летним стажем, член Нижегородской Коллегии Адвокатов. Специализируюсь на уголовных и гражданских делах любой сложности.</p>
+                <p>Защитил более 500 клиентов. Работаю на результат, а не на количество дел. Каждое дело — это чья-то жизнь, репутация или свобода. Подхожу к каждому клиенту индивидуально.</p>
+                <p>Все консультации — строго конфиденциально. Ваша проблема — моя задача. Я на вашей стороне.</p>
+            </div>
+        </div>
+    </div>
+
+<!-- Направления -->
+<div id="directions" class="directions-grid">
+    <div class="direction-card" onclick="openModal('Уголовные дела', 'Предоставляю полную защиту по уголовным делам на всех стадиях: доследственная проверка, предварительное расследование (дознание и следствие), судебное разбирательство в судах общей юрисдикции, включая апелляционные, кассационные и надзорные инстанции. Специализируюсь на делах, связанных со ст. 158 (кража), 159 (мошенничество), 228 (незаконный оборот наркотиков), 105 (убийство), 111 (тяжкий вред здоровью) УК РФ. Обеспечиваю посещение в СИЗО, сбор доказательств, составление ходатайств и жалоб, включая жалобы в Европейский Суд по правам человека. Все действия строго конфиденциальны.')">
+        Адвокат по Уголовным делам
+    </div>
+    <div class="direction-card" onclick="openModal('Гражданские дела', 'Представляю интересы в гражданских спорах: защита прав собственности, взыскание убытков и неустоек, оспаривание сделок, споры с застройщиками, банками и страховыми компаниями. Оказываю помощь при ДТП (в том числе со смертельным исходом), трудовых конфликтах (невыплата зарплаты, незаконное увольнение), а также в делах о защите чести, достоинства и деловой репутации. Подготавливаю иски, участвую в судебных заседаниях, обеспечиваем исполнение решений суда.')">
+        Адвокат по Гражданским делам
+    </div>
+    <div class="direction-card" onclick="openModal('Семейные споры', 'Разрешение семейных конфликтов с учётом ваших интересов и интересов детей: расторжение брака (в суде и ЗАГСе), раздел совместно нажитого имущества (включая недвижимость, бизнес, ценные бумаги), определение места жительства несовершеннолетних, взыскание алиментов (в твёрдой сумме или проценте), установление порядка общения с ребёнком. Использую как судебные, так и досудебные механизмы (соглашения, медиация), чтобы минимизировать конфликт и сохранить отношения.')">
+        Семейные споры. Раздел имущества
+    </div>
+    <div class="direction-card" onclick="openModal('Наследственные споры', 'Комплексное сопровождение наследственных дел: вступление в наследство, восстановление пропущенных сроков, оспаривание завещаний (в том числе при недееспособности наследодателя или под влиянием заблуждения/насилия), выдел супружеской доли, защита прав обязательных наследников. Представляю интересы в судах по спорам между наследниками, оспариванию недостойных наследников, признанию права собственности на наследственное имущество.')">
+        Наследственные споры. Имущественные споры
+    </div>
+    <div class="direction-card" onclick="openModal('Дела о наркотиках', 'Защита по делам, возбуждённым по ст. 228, 228.1, 228.2 УК РФ (незаконный оборот, хранение, сбыт, изготовление наркотиков). Провожу независимые экспертизы, оспариваю протоколы осмотра, досмотра и изъятия, добиваюсь исключения недопустимых доказательств. Работаю на переквалификацию на менее тяжкую статью, прекращение дела за примирением сторон или активное способствование раскрытию преступления, а также на назначение минимального наказания (включая условное).')">
+        Адвокат по делам о наркотиках
+    </div>
+    <div class="direction-card" onclick="openModal('Дела несовершеннолетних', 'Защита прав и законных интересов несовершеннолетних в уголовных, административных и семейных делах. Обеспечиваю участие педагога и законного представителя на всех следственных действиях, взаимодействую с комиссией по делам несовершеннолетних (КДН), органами опеки и образовательными учреждениями. Цель — избежать уголовного преследования, судимости и направления в закрытые учреждения, способствовать реабилитации и социальной адаптации подростка.')">
+        Адвокат по делам несовершеннолетних
+    </div>
+    <div class="direction-card" onclick="openModal('Экономические споры', 'Юридическое сопровождение бизнеса в арбитражных спорах: взыскание задолженности по договорам, оспаривание решений налоговых органов, защита от претензий по экономическим преступлениям (ст. 159, 160, 171, 172, 176 УК РФ), банкротство (как должника, так и кредитора), споры с контрагентами и госорганами. Обеспечиваю защиту имущества от незаконных арестов, представляю интересы в ФАС и судах всех инстанций.')">
+        Адвокат по экономическим спорам
+    </div>
+    <div class="direction-card" onclick="openModal('ДТП', 'Комплексная правовая помощь при дорожно-транспортных происшествиях. Гражданское направление: взыскание ущерба с виновника или страховой компании (при отказе в выплате по ОСАГО/КАСКО), оценка утраты товарной стоимости (УТС), компенсация морального вреда. Уголовное направление: защита по ст. 264 УК РФ (нарушение ПДД, повлекшее тяжкий вред или смерть), работа с материалами ГИБДД, автотехническими и транспортно-трасологическими экспертизами. Добиваюсь справедливого возмещения и минимизации последствий для вас.')">
+        Адвокат по ДТП
+    </div>
+</div>
+
+<!-- Модальное окно -->
+<div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModalManually()">&times;</span>
+        <h3 id="modal-title" style="color: #1a73e8; margin-top: 0; font-size: 1.4rem; text-align: center;"></h3>
+        <p id="modal-text" style="line-height: 1.7; color: #2c3e50; font-size: 1.05rem; text-align: justify; hyphens: auto;"></p>
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="tel:+79023068766" class="call-button" style="padding: 10px 24px; font-size: 1rem; display: inline-block; text-decoration: none; margin: 0;">
+                Позвонить прямо сейчас
+            </a>
+        </div>
+    </div>
+</div>
+
+    <!-- Видео -->
+    <div class="video-section">
+        <div style="max-width: 720px; margin: 0 auto;">
+            <video autoplay muted loop playsinline style="width: 100%; max-width: 800px; border-radius: 12px; margin: 20px auto; display: block; box-shadow: 0 6px 20px rgba(0,0,0,0.1);">
+                <source src="vid1.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </div>
+
+    <!-- Уголовные дела -->
+    <div id="criminal" class="service-block">
+        <h2>
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 22s8-4 8-10V6l-8-4-8 4v6c0 6 8 10 8 10z"></path>
+            </svg>
+            Уголовные дела
+        </h2>
+        <p style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 20px; color: #2c3e50;">
+            Представительство потерпевших, защита обвиняемых, свидетелей — любой статус, любая статья, любая стадия.
+        </p>
+        <ul>
+            <li>Доследственная проверка — не доведу до возбуждения дела;</li>
+            <li>Дознание и предварительное следствие — сбор доказательств, ходатайства;</li>
+            <li>Суды всех инстанций — районные, областные, Верховный суд;</li>
+            <li>УДО, замена наказания, административный надзор;</li>
+            <li>Посещение в СИЗО и колониях — конфиденциально и оперативно;</li>
+            <li>Составление жалоб: апелляция, кассация, надзор, ЕСПЧ.</li>
+        </ul>
+    </div>
+
+    <!-- Гражданские дела -->
+    <div id="civil" class="service-block">
+        <h2>
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 010 7.75"></path>
+            </svg>
+            Гражданские дела
+        </h2>
+        <p style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 20px; color: #2c3e50;">
+            Защищаю ваши права в спорах с физическими и юридическими лицами — от семейных конфликтов до сложных имущественных разногласий. Работаю на достижение реального результата: возврат имущества, компенсация ущерба, защита репутации и интересов в суде.
+        </p>
+        <ul>
+            <li>Раздел имущества при разводе — защита ваших активов;</li>
+            <li>Наследственные споры — оспаривание завещаний, восстановление сроков;</li>
+            <li>Земельные и имущественные споры — межевание, границы, выкуп;</li>
+            <li>Долги и взыскания — защита от коллекторов, банкротство физлиц;</li>
+            <li>ДТП и возмещение ущерба — работа со страховыми и судами;</li>
+            <li>Трудовые споры — невыплата зарплаты, незаконное увольнение;</li>
+            <li>Помощь иностранным гражданам — ВНЖ, гражданство, депортации.</li>
+        </ul>
+    </div>
+
+    <!-- Юридическое сопровождение бизнеса -->
+    <div id="business" class="service-block">
+        <h2>
+            <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>
+            </svg>
+            Юридическое сопровождение бизнеса
+        </h2>
+        <p style="font-size: 1.25rem; line-height: 1.7; margin-bottom: 20px; color: #2c3e50;">
+            Обеспечиваю надёжную правовую поддержку бизнеса на всех этапах — от заключения договоров до защиты в арбитражных спорах. Помогаю минимизировать риски, избежать штрафов и выигрывать даже в сложных экономических конфликтах.
+        </p>
+        <ul>
+            <li>Проверка и составление договоров — минимизируем риски;</li>
+            <li>Досудебные претензии и иски — взыскание долгов, неустоек;</li>
+            <li>Арбитражные споры — представительство в судах;</li>
+            <li>Трудовые споры с персоналом — увольнения, штрафы, проверки;</li>
+            <li>Экономические преступления — ст. 159, 160, 171, 172 УК РФ;</li>
+            <li>Сопровождение проверок — налоговые, прокуратура, полиция.</li>
+        </ul>
+    </div>
+
+    <!-- Отзывы -->
+    <div id="reviews" class="reviews-block">
+        <h2>
+            Отзывы клиентов
+        </h2>
+
+        <div class="carousel-outer">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Слайд 1 -->
+                    <div class="carousel-slide">
+                        <div class="review-card">
+                            <div class="review-text">Николай Валентинович вытащил меня из очень сложной ситуации по статье за мошенничество. Дело закрыли на стадии следствия — доказали отсутствие умысла.</div>
+                            <div class="review-meta"><strong>Максим Д.</strong> • Нижний Новгород<br><small>Уголовное дело • 2024</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Развод с разделом имущества затянулся на 2 года. После обращения к Пирякову всё решилось за 4 месяца. Вернули мне квартиру, которую почти отсудили.</div>
+                            <div class="review-meta"><strong>Анна Л.</strong> • Дзержинск<br><small>Семейный спор • 2018</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Помог взыскать долг с контрагента — 2,3 млн рублей. Суд выигран, деньги возвращены. Работает чётко, без пустых обещаний.</div>
+                            <div class="review-meta"><strong>Игорь С.</strong> • Нижний Новгород<br><small>Экономический спор • 2022</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Защитил моего сына по делу о наркотиках. Добился прекращения дела за недостаточностью доказательств. Огромное спасибо за профессионализм и человечность.</div>
+                            <div class="review-meta"><strong>Елена В.</strong> • Бор<br><small>Дело несовершеннолетнего • 2015</small></div>
+                        </div>
+                    </div>
+
+                    <!-- Слайд 2 -->
+                    <div class="carousel-slide">
+                        <div class="review-card">
+                            <div class="review-text">После ДТП страховая отказала в выплате. Адвокат подал в суд — выиграли, получили полную компенсацию + моральный ущерб.</div>
+                            <div class="review-meta"><strong>Дмитрий К.</strong> • Нижний Новгород<br><small>ДТП • 2020</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Оспаривал завещание после смерти матери. Брат пытался всё забрать. Николай Валентинович доказал давление на мать — завещание отменили.</div>
+                            <div class="review-meta"><strong>Ольга М.</strong> • Кстово<br><small>Наследственный спор • 2025</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Защита по делу о хищении в крупном размере. Был риск реального срока. Адвокат добился УДО на стадии апелляции. Спасибо за веру и результат!</div>
+                            <div class="review-meta"><strong>Артём П.</strong> • Нижний Новгород<br><small>Уголовное дело • 2022</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Помог оформить наследство после смерти отца — быстро, без судов, собрал все документы. Очень внимательный и порядочный человек.</div>
+                            <div class="review-meta"><strong>Татьяна Р.</strong> • Дзержинск<br><small>Наследство • 2016</small></div>
+                        </div>
+                    </div>
+
+                    <!-- Слайд 3 -->
+                    <div class="carousel-slide">
+                        <div class="review-card">
+                            <div class="review-text">Представлял интересы нашей фирмы в арбитраже. Спор с арендодателем на 5 млн — выиграли полностью. Рекомендую как надёжного юриста для бизнеса.</div>
+                            <div class="review-meta"><strong>Владимир Б.</strong> • Нижний Новгород<br><small>Юр. сопровождение • 2025</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Помог при незаконном увольнении. Вернул меня на работу + компенсацию за вынужденный прогул. Очень грамотно знает трудовое право.</div>
+                            <div class="review-meta"><strong>Наталья Г.</strong> • Богородск<br><small>Трудовой спор • 2021</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Спас от коллекторов — доказали незаконность долга. Теперь живу спокойно. Адвокат не берёт деньги за «просто консультацию» — только за результат.</div>
+                            <div class="review-meta"><strong>Сергей А.</strong> • Нижний Новгород<br><small>Гражданский спор • 2020</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Защита по делу о ДТП со смертельным исходом. Был обвиняемым. Добился прекращения дела — доказали, что вина лежит на пешеходе. Это спасло мою жизнь.</div>
+                            <div class="review-meta"><strong>Алексей Т.</strong> • Арзамас<br><small>Уголовное дело • 2014</small></div>
+                        </div>
+                    </div>
+
+                    <!-- Слайд 4 — клон первого (для плавного зацикливания) -->
+                    <div class="carousel-slide">
+                        <div class="review-card">
+                            <div class="review-text">Николай Валентинович вытащил меня из очень сложной ситуации по статье за мошенничество. Дело закрыли на стадии следствия — доказали отсутствие умысла.</div>
+                            <div class="review-meta"><strong>Максим Д.</strong> • Нижний Новгород<br><small>Уголовное дело • 2024</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Развод с разделом имущества затянулся на 2 года. После обращения к Пирякову всё решилось за 4 месяца. Вернули мне квартиру, которую почти отсудили.</div>
+                            <div class="review-meta"><strong>Анна Л.</strong> • Дзержинск<br><small>Семейный спор • 2018</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Помог взыскать долг с контрагента — 2,3 млн рублей. Суд выигран, деньги возвращены. Работает чётко, без пустых обещаний.</div>
+                            <div class="review-meta"><strong>Игорь С.</strong> • Нижний Новгород<br><small>Экономический спор • 2022</small></div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-text">Защитил моего сына по делу о наркотиках. Добился прекращения дела за недостаточностью доказательств. Огромное спасибо за профессионализм и человечность.</div>
+                            <div class="review-meta"><strong>Елена В.</strong> • Бор<br><small>Дело несовершеннолетнего • 2015</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-next-btn" id="nextBtn" aria-label="Следующие отзывы">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Экстренная помощь -->
+    <div id="contacts" class="emergency-block">
+        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: flex-start; margin-top: 25px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+            <div style="flex: 1; min-width: 280px; max-width: 480px; text-align: left;">
+                <div style="font-size: 1.1rem; color: #2c3e50; line-height: 1.8; margin-bottom: 32px;">
+                    <p><strong>Адрес:</strong><br>г. Нижний Новгород, ул. Васенко, д. 4, офис 403</p>
+                    <p><strong>Телефон:</strong><br>+7 (902) 306-87-66</p>
+                    <p><strong>Email:</strong><br>
+                        <a href="mailto:pvn_556@mail.ru" style="color: #1a73e8; text-decoration: none;">pvn_556@mail.ru</a>
+                    </p>
+                </div>
+
+                <a href="tel:+79023068766"
+                   style="display: inline-block; padding: 8px 20px; font-size: 0.95rem; font-weight: 600; color: #2c3e50; text-decoration: none; background: transparent; border: 1px solid #a0b8d8; border-radius: 4px; margin-bottom: 10px; transition: all 0.2s ease;"
+                   onmouseover="this.style.borderColor='#8a9fb8'; this.style.color='#1a73e8';"
+                   onmouseout="this.style.borderColor='#a0b8d8'; this.style.color='#2c3e50';">
+                    Позвонить прямо сейчас
+                </a>
+
+                <p style="margin: 0;">
+                    <a href="https://yandex.ru/maps/org/advokat_piryakov_n_v_/92912791736/?indoorLevel=1&ll=43.872919%2C56.349350&z=16.65" 
+                       target="_blank" 
+                       style="color: #1a73e8; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-size: 1.1rem;">
+                        Открыть на Яндекс.Картах →
+                    </a>
+                </p>
+            </div>
+
+            <div style="flex: 1; min-width: 280px; max-width: 650px; height: 420px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://yandex.ru/map-widget/v1/?um=constructor%3A0ce2adbfd0f17627136bf4359005de7f953fa165748426d06dc9915aa88e0939&amp;source=constructor" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0"
+                    style="border: none; display: block;">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        © 2025 Адвокат Нижегородской Коллегии адвокатов. Все права защищены.<br>
+        Сайт носит исключительно информационный характер. Не является публичной офертой.
+    </footer>
+
+    <!-- Плавный скролл -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === "#") return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const y = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+    <!-- Бесконечная карусель отзывов -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const track = document.getElementById('carouselTrack');
+            const nextBtn = document.getElementById('nextBtn');
+            const totalVisibleSlides = 3; // только 3 уникальных
+            let current = 0;
+
+            nextBtn.addEventListener('click', () => {
+                if (current < totalVisibleSlides) {
+                    current++;
+                    track.style.transform = `translateX(-${current * 25}%)`;
+                }
+
+                if (current === totalVisibleSlides) {
+                    // После показа 4-го (клона) — мгновенно перейти к 1-му
+                    setTimeout(() => {
+                        current = 0;
+                        track.style.transition = 'none';
+                        track.style.transform = 'translateX(0)';
+                        // Восстановить transition
+                        setTimeout(() => {
+                            track.style.transition = 'transform 0.5s ease-in-out';
+                        }, 50);
+                    }, 500); // 500 мс = длительность анимации
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
