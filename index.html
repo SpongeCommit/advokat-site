@@ -414,6 +414,41 @@
             position: relative;
             animation: slideIn 0.4s;
         }
+.about-block {
+    height: auto; /* вместо 300px */
+    min-height: 220px; /* минимальная высота для компактности */
+    padding: 25px 15px; /* внутренние отступы вместо абсолютного позиционирования */
+    position: relative;
+}
+
+/* Скрываем фоновое фото */
+.about-photo-bg {
+    display: none !important;
+}
+
+/* Меняем overlay: теперь это просто текстовый блок */
+.about-text-overlay {
+    position: static; /* отменяем absolute */
+    background: none;
+    color: #2c3e50;
+    text-align: center;
+    padding: 0;
+    display: block;
+    width: auto;
+    height: auto;
+}
+
+.about-text-content {
+    padding-left: 0;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.about-text-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
 
         @keyframes fadeIn {
             from { opacity: 0; }
