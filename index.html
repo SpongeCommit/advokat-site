@@ -506,39 +506,44 @@
                 height: 70px;
             }
 
-            /* --- Адаптация блока "Обо мне" для мобильных --- */
-            .about-block {
-                height: auto;
-                min-height: 280px;
-                padding: 25px 20px;
-                position: relative;
-            }
+            /* --- Полная адаптация "Обо мне" для мобильных --- */
+.about-block {
+    height: auto;
+    min-height: unset; /* убираем минимальную высоту */
+    padding: 25px 15px;
+    position: relative;
+    overflow: visible; /* критически важно! */
+    background: white; /* опционально: добавить фон, как у других блоков */
+    border: 1px solid #d0e0f0;
+    box-shadow: 0 6px 20px rgba(0, 30, 60, 0.08);
+}
 
-            .about-photo-bg {
-                display: none !important;
-            }
+.about-photo-bg {
+    display: none !important;
+}
 
-            .about-text-overlay {
-                position: static;
-                background: none;
-                color: #2c3e50;
-                text-align: center;
-                padding: 0;
-                display: block;
-            }
+.about-text-overlay {
+    position: static !important;
+    background: none !important;
+    color: #2c3e50 !important;
+    text-align: center;
+    padding: 0 !important;
+    display: block !important;
+    margin: 0;
+}
 
-            .about-text-content {
-                padding-left: 0;
-                max-width: 100%;
-                margin: 0 auto;
-            }
+.about-text-content {
+    padding: 0 !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+}
 
-            .about-text-content p {
-                font-size: 1rem;
-                line-height: 1.7;
-                margin-bottom: 12px;
-            }
-
+.about-text-content p {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+    margin: 0 0 14px !important;
+    padding: 0;
+}
             /* остальные стили */
             .service-block,
             .reviews-block,
