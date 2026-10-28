@@ -698,3 +698,140 @@ footer a { color: #1a73e8; text-decoration: underline; }
     .cta-buttons { flex-direction: column; }
     .btn-cta { width: 100%; }
 }
+
+
+/* =========================================
+   СТРАНИЦА УСЛУГ
+   ========================================= */
+.services-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
+.services-title {
+    font-size: 2.4rem;
+    color: #1a3a6c;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.services-subtitle {
+    text-align: center;
+    color: #5a6b82;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.services-index .direction-card {
+    padding: 18px 12px;
+    font-size: 1rem;
+}
+
+/* Каждая услуга — отдельная карточка */
+.service-detail {
+    background: white;
+    border: 1px solid #d0e0f0;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,30,60,0.06);
+    padding: 35px;
+    margin-bottom: 30px;
+    scroll-margin-top: 90px; /* важно: заголовок не прячется под меню */
+}
+
+.service-detail h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #1a3a6c;
+    margin-top: 0;
+    font-size: 1.7rem;
+}
+
+.service-detail .service-icon {
+    width: 30px;
+    height: 30px;
+    color: #1a73e8;
+    flex-shrink: 0;
+}
+
+.service-lead {
+    font-size: 1.1rem;
+    color: #42546b;
+    border-bottom: 1px solid #e0eaf4;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.service-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.service-columns h3 {
+    color: #2a4a8a;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.service-columns ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.service-columns li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.service-note {
+    margin-top: 20px;
+    background: #f0f7ff;
+    border-left: 3px solid #1a73e8;
+    padding: 15px 18px;
+    border-radius: 6px;
+    font-size: 0.98rem;
+    color: #2c3e50;
+}
+
+/* Блок о стоимости */
+.service-price-note {
+    background: white;
+    border: 1px solid #d0e0f0;
+    border-radius: 15px;
+    padding: 30px 35px;
+    margin-bottom: 30px;
+}
+
+.service-price-note h2 {
+    color: #1a3a6c;
+    margin-top: 0;
+}
+
+.service-price-note p {
+    color: #42546b;
+    margin-bottom: 12px;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .services-title { font-size: 1.8rem; }
+    .services-index { grid-template-columns: repeat(2, 1fr); }
+    .service-detail { padding: 22px 18px; }
+    .service-detail h2 { font-size: 1.35rem; }
+    .service-lead { font-size: 1rem; }
+
+    /* Две колонки превращаются в одну */
+    .service-columns { grid-template-columns: 1fr; gap: 25px; }
+    .service-price-note { padding: 25px 20px; }
+}
