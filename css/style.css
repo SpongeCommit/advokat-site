@@ -822,7 +822,227 @@ footer a { color: #1a73e8; text-decoration: underline; }
     color: #42546b;
     margin-bottom: 12px;
 }
+/* =========================================
+   СТРАНИЦА КОНТАКТОВ
+   ========================================= */
+.contacts-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
 
+.contacts-title {
+    font-size: 2.4rem;
+    color: #1a3a6c;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.contacts-subtitle {
+    text-align: center;
+    color: #5a6b82;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* Главная сетка: контакты + карта */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Блоки контактов */
+.contacts-info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-big-block {
+    background: white;
+    border: 1px solid #d0e0f0;
+    border-radius: 12px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0,30,60,0.04);
+    transition: all 0.2s;
+}
+
+.contact-big-block:hover {
+    box-shadow: 0 4px 16px rgba(0,30,60,0.08);
+    border-color: #1a73e8;
+}
+
+.contact-big-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-big-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    stroke-width: 2;
+}
+
+.phone-icon { background: #1a73e8; }
+.messengers-icon { background: #25D366; }
+.email-icon { background: #3a5ca0; }
+.address-icon { background: #e67e22; }
+.schedule-icon { background: #8e44ad; }
+
+.contact-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #5a6b82;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.big-phone {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a73e8;
+    display: inline-block;
+    margin-bottom: 4px;
+    text-decoration: none;
+}
+
+.big-email {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1a73e8;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.contact-hint {
+    font-size: 0.9rem;
+    color: #5a6b82;
+    margin-top: 4px;
+}
+
+.address-text {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #2c3e50;
+}
+
+.address-text small {
+    color: #5a6b82;
+}
+
+.schedule-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.schedule-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 6px 0;
+    border-bottom: 1px dashed #e0eaf4;
+    font-size: 1rem;
+}
+
+.schedule-list li:last-child { border-bottom: none; }
+
+.schedule-list span { color: #5a6b82; }
+
+/* Карта */
+.contacts-map {
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 500px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #d0e0f0;
+}
+
+/* Как добраться */
+.how-to-reach {
+    background: white;
+    border: 1px solid #d0e0f0;
+    border-radius: 15px;
+    padding: 35px;
+    margin-bottom: 30px;
+}
+
+.how-to-reach h2 {
+    color: #1a3a6c;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.reach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.reach-item h3 {
+    color: #2a4a8a;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+}
+
+.reach-item p {
+    margin: 0;
+    line-height: 1.6;
+    color: #42546b;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .contacts-title { font-size: 1.8rem; }
+
+    /* Сетка в одну колонку */
+    .contacts-grid { grid-template-columns: 1fr; }
+
+    .contacts-map { min-height: 300px; }
+
+    .contact-big-block {
+        padding: 16px 18px;
+        gap: 15px;
+    }
+
+    .contact-big-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .big-phone { font-size: 1.3rem; }
+
+    /* Кнопки мессенджеров на всю ширину */
+    .messenger-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-messenger {
+        text-align: center;
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    /* Как добраться — в одну колонку */
+    .reach-grid { grid-template-columns: 1fr; gap: 20px; }
+    .how-to-reach { padding: 25px 20px; }
+}
 /* Мобильная версия */
 @media (max-width: 768px) {
     .services-title { font-size: 1.8rem; }
