@@ -59,3 +59,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+    // 4. Аккордеон FAQ
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Закрываем все другие вопросы (опционально — можно убрать, если хотите, чтобы несколько были открыты)
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            
+            // Открываем/закрываем текущий
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
